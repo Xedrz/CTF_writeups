@@ -103,20 +103,23 @@ Berhasil mendapatkan shell sebagai root dan mengambil flag ketiga.
 
 ## Flag Capture
 Flag	Lokasi	Isi
+
 1	/key-1-of-3.txt	073403c8a58a1f80d943455fb30724b9
+
 2	/home/robot/key-2-of-3.txt	822c73956184f694993bede3eb39f959
+
 3	/root/key-3-of-3.txt	04787ddef27c3dee1ee161b21670b4e4
 
 ## Kesimpulan
 CTF ini mengajarkan teknik penting dalam pentesting:
 
-Enumerasi file tersembunyi dan wordlist
+- Enumerasi file tersembunyi dan wordlist
 
-Reverse shell manual
+- Reverse shell manual
 
-Cracking password MD5
+- Cracking password MD5
 
-Privilege escalation via SUID binary (nmap --interactive)
+- Privilege escalation via SUID binary (nmap --interactive)
 
 ## Screenshots
 Lihat folder screenshots/ untuk gambar pendukung flag.
