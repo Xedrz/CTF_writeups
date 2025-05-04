@@ -1,4 +1,4 @@
-# 🕵️ Mr. Robot CTF – TryHackMe
+#  Mr. Robot CTF – TryHackMe
 
 **Nama:** Jonathan Jethro  
 **Tanggal:** 4 Mei 2025  
@@ -6,7 +6,7 @@
 
 ---
 
-## 📌 Pendahuluan
+## Pendahuluan
 
 Mr. Robot adalah CTF dari TryHackMe yang terinspirasi dari serial TV populer.  
 Tujuan utama adalah mendapatkan ketiga flag tersembunyi melalui tahapan:
@@ -17,7 +17,7 @@ Tujuan utama adalah mendapatkan ketiga flag tersembunyi melalui tahapan:
 
 ---
 
-## 🔍 Enumerasi
+## Enumerasi
 
 ### Nmap Scan
 
@@ -42,7 +42,7 @@ key-1-of-3.txt
 ```
 Ditemukan wordlist fsocity.dic dan flag pertama.
 
-## 🎯 Eksploitasi Login
+## Eksploitasi Login
 Setelah brute-force menggunakan fsocity.dic, ditemukan:
 
 Username: elliot
@@ -64,7 +64,7 @@ nc -lvnp 4444
 ```
 Shell berhasil dengan user: daemon.
 
-## 🧑‍💻 Privilege Escalation ke robot
+## Privilege Escalation ke robot
 Ditemukan file password:
 
 ```
@@ -84,7 +84,7 @@ su robot
 ```
 Berhasil menjadi user robot, ditemukan flag kedua.
 
-🔝 Privilege Escalation ke Root
+## Privilege Escalation ke Root
 User robot tidak punya akses sudo.
 Lalu dicari file SUID:
 ```
@@ -101,13 +101,13 @@ nmap> !sh
 ```
 Berhasil mendapatkan shell sebagai root dan mengambil flag ketiga.
 
-## 🏁 Flag Capture
+## Flag Capture
 Flag	Lokasi	Isi
 1	/key-1-of-3.txt	073403c8a58a1f80d943455fb30724b9
 2	/home/robot/key-2-of-3.txt	822c73956184f694993bede3eb39f959
 3	/root/key-3-of-3.txt	04787ddef27c3dee1ee161b21670b4e4
 
-## ✅ Kesimpulan
+## Kesimpulan
 CTF ini mengajarkan teknik penting dalam pentesting:
 
 Enumerasi file tersembunyi dan wordlist
@@ -118,8 +118,8 @@ Cracking password MD5
 
 Privilege escalation via SUID binary (nmap --interactive)
 
-📸 Screenshots
+## Screenshots
 Lihat folder screenshots/ untuk gambar pendukung flag.
 
-📄 Versi PDF
+## Versi PDF
 Tersedia juga dalam format PDF untuk dilihat secara offline.
